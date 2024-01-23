@@ -1,0 +1,72 @@
+.costGridLayout {
+  display: grid;
+  grid-template-areas: 
+  "t t t t t"
+  "ws ws ws hm ba"
+  "r r r r r"
+  "le le le le le";
+  grid-template-rows: 150px 140px 80px auto;
+  grid-template-columns: auto auto auto auto 140px;
+  padding: 50px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  width: 80%;
+}
+
+.costGridLayout__blockTitles {
+  grid-area: t;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+}
+
+.costGridLayout__blockWhereSpent {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 0px 20px 0px 0px;
+  grid-area: ws;
+}
+
+.costGridLayout__blockHowMany {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 0px 20px 0px 0px;
+  grid-area: hm;
+}
+
+.costGridLayout__blockButtonAdd {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  padding: 0px 15px;
+  grid-area: ba;
+}
+
+.costGridLayout__blockResult {
+  grid-area: r;
+}
+
+.costGridLayout__blockListExpenses {
+  grid-area: le;
+}
+
+@media (max-width: 1181px) {
+  .costGridLayout{
+    grid-template-areas: 
+    "t t t "
+    "ws ws ws"
+    "hm hm hm"
+    "ba ba ba"
+    "r r r"
+    "le le le";
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 150px 140px 100px 75px;
+  }
+
+  .costGridLayout__blockButtonAdd {
+    justify-content: end;
+  }
+}
