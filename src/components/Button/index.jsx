@@ -1,13 +1,18 @@
 import './styles.css';
 
-const Button = ({ actionButton, buttonIcon, nameIcon, textButton, isButtonStyle }) => {
-const buttonClass = isButtonStyle ? 'addStyle' : 'spendStyle';
-
+const Button = ({ 
+  actionButton, 
+  buttonIcon, 
+  nameIcon, 
+  textButton,
+  type, 
+  buttonClass=''
+}) => {
   return (
     <button 
       onClick={actionButton} 
-      className ={`button button_${buttonClass}`}
-      type='button'
+      className ={`button ${buttonClass}`}
+      type={type}
     >
       <img src={buttonIcon} alt={nameIcon} />
       <span>{textButton}</span>

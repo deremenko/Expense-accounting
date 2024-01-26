@@ -12,39 +12,41 @@ const EditInput = ({
   updatedValueSpend,
 }) => {
   return (
-    <>
+    <div className="editInput">
       <div className="editInput__name">
         <InputLine 
-          nameFieldObject={"text"} 
+          nameFieldObject="text" 
           handleInputValue={handleTextChange}
           value={updatedValueSpend.text}
         />
       </div>
       <div className="editInput__date">
         <InputLine 
-          nameFieldObject={"date"} 
+          nameFieldObject="date" 
           handleInputValue={handleTextChange}
           value={updatedValueSpend.date}
         />
       </div>
       <div className="editInput__amount">
         <InputLine
-          nameFieldObject={"amount"} 
+          nameFieldObject="amount" 
           handleInputValue={handleTextChange}
           value={updatedValueSpend.amount}
         />
       </div>
       <Button
-        isButtonStyle={false} 
+        buttonClass="button_spendStyle"
         buttonIcon={checkMark}
         actionButton={() => changeSpend(id)}
+        type="button"
       />
       <Button
-        isButtonStyle={false} 
+        buttonClass="button_spendStyle"
         buttonIcon={crossIcon}
         actionButton={cancelEdit}
+        type="button"
       />
-    </>
+    </div>
   );
 }
 

@@ -1,5 +1,10 @@
 .inputLine {
   display: flex;
+  flex-direction: column;
+}
+
+.inputLine__body {
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 45px;

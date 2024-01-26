@@ -8,16 +8,17 @@ const InputLine = ({
   value 
 }) => {
   return (
-    <>
+    <div className="inputLine">
       <label>{inputheader}</label>
       <input
         type="text"
-        className="inputLine"
+        className="inputLine__body"
         placeholder={placeholder}
-        onChange={(event) => handleInputValue(event, nameFieldObject)}
+        onChange={(event) => handleInputValue(event, event.target.name)}
         value={value}
+        name={nameFieldObject}
       />
-    </>
+    </div>
   );
 }
 

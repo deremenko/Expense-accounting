@@ -2,7 +2,7 @@ import './styles.css';
 
 const ErrorMessage = ({ message }) => {
   return (
-    <p className="errorMessage">{message}</p>
+    <label className="errorMessage">{message}</label>
   );
 }
 

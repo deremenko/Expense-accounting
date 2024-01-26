@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import InputLine from '../InputLine';
 import Button from '../Button';
 import Spend from '../Spend';
+import EditInput from '../EditInput';
 import ErrorMessage from '../ErrorMessage';
 import Total from '../Total';
 import { initialSpending } from '../../constants.js';
@@ -30,7 +31,7 @@ const SpendsTracker =() => {
   
   useEffect(() => {
     calcTotalAmount();
-  }, [spends.length]);
+  }, [spends]);
 
   useEffect(() => {
     localStorage.setItem('spends', JSON.stringify(spends));
@@ -59,13 +60,13 @@ const SpendsTracker =() => {
   };
 
   const handleEditedSpendButton = (idSpend) => {
-    const indexSpend = spends.findIndex(item => item.id === idSpend);
+    const indexEditedSpend = spends.findIndex(item => item.id === idSpend);
     setIdEditedSpend(idSpend);
     setUpdatedValueSpend((prevState) => ({
       ...prevState,
-      text: spends[indexSpend].text,
-      date: spends[indexSpend].date,
-      amount: spends[indexSpend].amount
+      text: spends[indexEditedSpend].text,
+      date: spends[indexEditedSpend].date,
+      amount: spends[indexEditedSpend].amount
     }))
   };
 
@@ -104,8 +105,8 @@ const SpendsTracker =() => {
       return;
     };
 
-    const indexSpend = spends.findIndex(item => item.id === idSpend);
-    spends[indexSpend] = {
+    const indexEditedSpend = spends.findIndex(item => item.id === idSpend);
+    spends[indexEditedSpend] = {
       id: idSpend, 
       text: validateText, 
       date: updatedValueSpend.date,
@@ -114,6 +115,7 @@ const SpendsTracker =() => {
 
     localStorage.setItem('spends', JSON.stringify(spends)); 
     setIdEditedSpend(null);
+    setSpends([...spends]); 
     setUpdatedValueSpend({
       text: '',
       amount: '',
@@ -161,7 +163,7 @@ const SpendsTracker =() => {
   }
 
   const deleteSpend = (idSpend) => {
-    let spendsBuffer = spends.filter((spend) => {
+    const spendsBuffer = spends.filter((spend) => {
       return spend.id !== idSpend;
     })
 
@@ -177,48 +179,64 @@ const SpendsTracker =() => {
           <ErrorMessage message={error.textError} />
         )}
         <InputLine
-          inputheader={"Куда было потрачено"} 
-          placeholder={"Куда было потрачено"} 
+          inputheader="Куда было потрачено" 
+          placeholder="Куда было потрачено"
           value={inputSpend.textSpend} 
           handleInputValue={handleInputChange} 
-          nameFieldObject={"textSpend"} 
+          nameFieldObject="textSpend"
         />
       </div>
       <div className="spendsTracker__blockHowMany">
         <InputLine 
-          inputheader={"Сколько было потрачено"} 
-          placeholder={"Сколько было потрачено"} 
+          inputheader="Сколько было потрачено" 
+          placeholder="Сколько было потрачено" 
           value={inputSpend.amountSpent} 
           handleInputValue={handleInputChange} 
-          nameFieldObject={"amountSpent"} 
+          nameFieldObject="amountSpent" 
         />
       </div>
       <div className="spendsTracker__blockButtonAdd">
         <Button 
-          textButton={"Добавить"} 
+          textButton="Добавить" 
           actionButton={addSpend} 
-          isButtonStyle={true} 
+          buttonClass="button_addStyle" 
         />
       </div>
       <div className="spendsTracker__blockResult">
         <Total totalAmount={totalAmount} />
       </div>
       <div className="spendsTracker__blockListExpenses">
-      {spends.map((spend, index) => (
-        <Spend 
-          key={spend.id}
-          spend={spend} 
-          index={index}
-          error={error} 
-          handleEditedSpendButton={handleEditedSpendButton}
-          handleTextChange={handleTextChange}
-          changeSpend={changeSpend} 
-          cancelEdit={cancelEdit}
-          idEditedSpend={idEditedSpend}
-          updatedValueSpend={updatedValueSpend}
-          deleteSpend={deleteSpend} 
-        />
-      ))}
+        {spends.map((spend, index) => (
+          <div key={spend.id} className="spendsTracker__ListExpenses">
+            {error.showError && idEditedSpend === spend.id && (
+              <ErrorMessage message={error.textError} />
+            )}
+            {idEditedSpend === spend.id ? (
+              <EditInput
+                isButtonStyle={false}
+                changeSpend={changeSpend}
+                cancelEdit={cancelEdit}
+                handleTextChange={handleTextChange}
+                id={spend.id}
+                updatedValueSpend={updatedValueSpend}
+              />
+            ) : (
+              <Spend
+                key={spend.id}
+                spend={spend}
+                index={index}
+                error={error}
+                handleEditedSpendButton={handleEditedSpendButton}
+                handleTextChange={handleTextChange}
+                changeSpend={changeSpend}
+                cancelEdit={cancelEdit}
+                idEditedSpend={idEditedSpend}
+                updatedValueSpend={updatedValueSpend}
+                deleteSpend={deleteSpend}
+              />
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
