@@ -1,8 +1,8 @@
 import './styles.css';
 
-function Total(props) {
+const Total = ({ totalAmount }) => {
   return (
-    <p className="total">Итого: {props.countTotal()} </p>
+    <p className="total">Итого: {totalAmount} </p>
   );
 
 }

@@ -1,4 +1,4 @@
-.costGridLayout {
+.spendsTracker {
   display: grid;
   grid-template-areas: 
   "t t t t t"
@@ -13,7 +13,7 @@
   width: 80%;
 }
 
-.costGridLayout__blockTitles {
+.spendsTracker__blockTitles {
   grid-area: t;
   display: flex;
   justify-content: center;
@@ -21,7 +21,7 @@
   font-size: 3em;
 }
 
-.costGridLayout__blockWhereSpent {
+.spendsTracker__blockWhereSpent {
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -29,7 +29,7 @@
   grid-area: ws;
 }
 
-.costGridLayout__blockHowMany {
+.spendsTracker__blockHowMany {
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -37,7 +37,7 @@
   grid-area: hm;
 }
 
-.costGridLayout__blockButtonAdd {
+.spendsTracker__blockButtonAdd {
   display: flex;
   justify-content: center;
   align-items: end;
@@ -45,16 +45,16 @@
   grid-area: ba;
 }
 
-.costGridLayout__blockResult {
+.spendsTracker__blockResult {
   grid-area: r;
 }
 
-.costGridLayout__blockListExpenses {
+.spendsTracker__blockListExpenses {
   grid-area: le;
 }
 
 @media (max-width: 1181px) {
-  .costGridLayout{
+  .spendsTracker{
     grid-template-areas: 
     "t t t "
     "ws ws ws"
@@ -66,7 +66,7 @@
     grid-template-rows: 150px 140px 100px 75px;
   }
 
-  .costGridLayout__blockButtonAdd {
+  .spendsTracker__blockButtonAdd {
     justify-content: end;
   }
 }

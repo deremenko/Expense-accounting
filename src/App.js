@@ -1,8 +1,8 @@
-import CostGridLayout from './components/CostGridLayout';
+import SpendsTracker from './components/SpendsTracker';
 
 function App() {
   return (
-    <CostGridLayout />
+    <SpendsTracker />
   );
 }
 

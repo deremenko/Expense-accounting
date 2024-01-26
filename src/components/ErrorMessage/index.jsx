@@ -1,8 +1,8 @@
 import './styles.css';
 
-function ErrorMessage(props) {
+const ErrorMessage = ({ message }) => {
   return (
-    <p className='errorMessage'>{props.message}</p>
+    <p className="errorMessage">{message}</p>
   );
 }
 

@@ -1,15 +1,24 @@
 import './styles.css';
 
-function InputLine(props) {
-
+const InputLine = ({ 
+  inputheader,
+  placeholder, 
+  handleInputValue, 
+  nameFieldObject, 
+  value 
+}) => {
   return (
-    <input className="inputLine" 
-      placeholder={props.placeholder}
-      onChange={(event) => {props.handleInputValue(event,props.keyStateObject)}}
-      value={props.value}
-    />
+    <>
+      <label>{inputheader}</label>
+      <input
+        type="text"
+        className="inputLine"
+        placeholder={placeholder}
+        onChange={(event) => handleInputValue(event, nameFieldObject)}
+        value={value}
+      />
+    </>
   );
-
 }
 
 export default InputLine;

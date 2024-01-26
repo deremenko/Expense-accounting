@@ -2,21 +2,24 @@ import { generateUniqueId } from './helpers/generateUniqueId.js';
 import { createTimesTamp } from './helpers/createTimesTamp.js';
 
 export const initialSpending = [
-  { id: generateUniqueId(), 
+  { 
+    id: generateUniqueId(), 
     text: 'Магазин "Губительная восьмерка"', 
     date: createTimesTamp(),
-    expense: 1771,
+    amount: 1771,
   },
   
-  { id: generateUniqueId(), 
+  { 
+    id: generateUniqueId(), 
     text: 'Магазин "Последний восход"', 
     date: createTimesTamp(),
-    expense: 982,
+    amount: 982,
   },
 
-  { id: generateUniqueId(), 
+  { 
+    id: generateUniqueId(), 
     text: 'Магазин "Для Людей и из Людей"', 
     date: createTimesTamp(), 
-    expense: 12312,
+    amount: 12312,
   },
 ];

@@ -1,31 +1,19 @@
-.spend {
-  display: flex;
-  align-items: center;
-  font-size: 2em;
-}
-
-.spend__name {
+.editInput__name {
   width: 55%;
   margin: 0px 5px 0px 0px;
   padding: 5px;
   min-height: 30px;
 }
 
-.spend__date {
+.editInput__date {
   width: 20%;
   margin: 0px 5px 0px 0px;
   padding: 5px;
   min-height: 30px;
 }
 
-.spend__amount {
+.editInput__amount {
   width: 10%;
   padding: 5px;
   min-height: 30px;
-}
-
-.spend__errorBlock {
-  padding: 0px 0px 5px 0px;
-  flex: 1;
-  font-size: 0.6em;
 }
