@@ -11,21 +11,21 @@ const Spend = ({
 }) => {
   return (
     <div className="spend">
-        <p className="spend__name">{index + 1}){spend.text}</p>
-        <p className="spend__date">{spend.date}</p>
-        <p className="spend__amount">{spend.amount} p.</p>
-        <Button
-          buttonClass="button_spendStyle" 
-          actionButton={() => handleEditedSpendButton(spend.id)}
-          buttonIcon={penIcon}
-          type="button"
-        />
-        <Button
-          buttonClass="button_spendStyle"
-          buttonIcon={trashBoxIcon}
-          actionButton={() => deleteSpend(spend.id)}
-          type="button"
-        />
+      <p className="spend__name">{index + 1}){spend.text}</p>
+      <p className="spend__date">{spend.date}</p>
+      <p className="spend__amount">{spend.amount} p.</p>
+      <Button
+        buttonClass="button_spendStyle" 
+        actionButton={() => handleEditedSpendButton(spend.id)}
+        buttonIcon={penIcon}
+        type="button"
+      />
+      <Button
+        buttonClass="button_spendStyle"
+        buttonIcon={trashBoxIcon}
+        actionButton={() => deleteSpend(spend.id)}
+        type="button"
+      />
     </div>
   );
 }

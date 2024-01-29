@@ -37,14 +37,16 @@ const SpendsTracker =() => {
     localStorage.setItem('spends', JSON.stringify(spends));
   }, []);
 
-  const handleInputChange = (event, key) => {
+  const handleInputChange = (event) => {
+    const key = event.target.name
     setInputSpend((prevState) => ({
       ...prevState,
       [key]: event.target.value 
     }));
   };
 
-  const handleTextChange = (event, key) => {
+  const handleTextChange = (event) => {
+    const key = event.target.name
     setUpdatedValueSpend((prevState) => ({
       ...prevState,
       [key]: event.target.value 
@@ -53,7 +55,6 @@ const SpendsTracker =() => {
 
   const calcTotalAmount = () => {
     const sum = spends.reduce((accumulator, spend) => {
-        console.log(spend["amount"]);
         return accumulator + Number(spend["amount"]);
     }, 0);
     setTotalAmount(sum);
@@ -179,6 +180,7 @@ const SpendsTracker =() => {
           <ErrorMessage message={error.textError} />
         )}
         <InputLine
+          inputId="nameSpendInput"
           inputheader="Куда было потрачено" 
           placeholder="Куда было потрачено"
           value={inputSpend.textSpend} 
@@ -187,7 +189,8 @@ const SpendsTracker =() => {
         />
       </div>
       <div className="spendsTracker__blockHowMany">
-        <InputLine 
+        <InputLine
+          inputId="amoutSpendInput" 
           inputheader="Сколько было потрачено" 
           placeholder="Сколько было потрачено" 
           value={inputSpend.amountSpent} 

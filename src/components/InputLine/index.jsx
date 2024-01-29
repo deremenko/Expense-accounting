@@ -5,16 +5,18 @@ const InputLine = ({
   placeholder, 
   handleInputValue, 
   nameFieldObject, 
-  value 
+  value,
+  inputId 
 }) => {
   return (
     <div className="inputLine">
-      <label>{inputheader}</label>
+      <label htmlFor={inputId}>{inputheader}</label>
       <input
+        id={inputId}
         type="text"
         className="inputLine__body"
         placeholder={placeholder}
-        onChange={(event) => handleInputValue(event, event.target.name)}
+        onChange={(event) => handleInputValue(event)}
         value={value}
         name={nameFieldObject}
       />
