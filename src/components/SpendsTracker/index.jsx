@@ -174,7 +174,7 @@ const SpendsTracker =() => {
 
   return (
     <div className="spendsTracker">
-      <h className="spendsTracker__blockTitles">Учет моих расходов</h>
+      <h2 className="spendsTracker__blockTitles">Учет моих расходов</h2>
       <div className="spendsTracker__blockWhereSpent">
       {idEditedSpend === null && error.showError && (
           <ErrorMessage message={error.textError} />
